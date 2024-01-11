@@ -22,7 +22,7 @@ classifiers = [
  dependencies = [
     "requests",
     "beautifulsoup4",
-    "re",
+    "regex",
     "pyYAML",
     "datetime"
  ]
