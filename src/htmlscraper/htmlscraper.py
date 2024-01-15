@@ -137,7 +137,7 @@ def extract_elements_by_ids(html, id_list):
     return result_dict
 
 
-def display_data(scraped_data):
+def display_data(scraped_data:dict):
     if scraped_data:
         # Print or use the extracted data as needed
         for key, value in scraped_data.items():
@@ -147,7 +147,7 @@ def display_data(scraped_data):
         logger.warning("No data to display.")
 
 
-def scrape_data(webpage_url:str, measurements_filepath):
+def scrape_data(webpage_url:str, measurements_filepath:str):
     try:
         # Fetch HTML content from the specified address and path
         html = fetch_html_content(webpage_url)
@@ -166,6 +166,5 @@ def scrape_data(webpage_url:str, measurements_filepath):
             id_dict.update({name: category})
     
     scraped_values = extract_elements_by_ids(soup, list(id_dict.keys()))
-    scraped_time = datetime.now()
 
-    return scraped_values, scraped_time
+    return scraped_values
