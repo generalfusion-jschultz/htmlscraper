@@ -22,9 +22,7 @@ classifiers = [
  dependencies = [
     "requests",
     "beautifulsoup4",
-    "regex",
-    "pyYAML",
-    "datetime"
+    "regex"
  ]
 
 # If a module, then use fetch version from src/module_name/__init__.py
