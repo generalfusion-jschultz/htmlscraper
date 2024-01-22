@@ -128,10 +128,10 @@ class Scraper:
         try:
             # Fetch HTML content from the specified address and path
             html = self.fetch_html_content(self.url)
-        except:
+        except Exception:
             # GetRequestUnsuccessful:  # CHECK EXCEPTION TYPE WHEN NOT CONNECTED
             # If unsuccessful, then restart loop and try again
-            print('Fetch unsuccessful')
+            logger.warning('Fetch unsuccessful')
         # Parse the HTML content using BeautifulSoup
         soup = self.parse_html_content(html)
         
@@ -139,6 +139,24 @@ class Scraper:
         scraped_values = self.extract_elements_by_ids(soup, id_list)
 
         return scraped_values
+    
+    def scrape_data(self, id_list:list, time_list:list):
+
+        try:
+            # Fetch HTML content from the specified address and path
+            html = self.fetch_html_content(self.url)
+        except Exception:
+            # GetRequestUnsuccessful:  # CHECK EXCEPTION TYPE WHEN NOT CONNECTED
+            # If unsuccessful, then restart loop and try again
+            logger.warning('Fetch unsuccessful')
+        # Parse the HTML content using BeautifulSoup
+        soup = self.parse_html_content(html)
+        
+        # Scrape data from the parsed HTML
+        scraped_values = self.extract_elements_by_ids(soup, id_list)
+        scraped_time = self.extract_elements_by_ids(soup, time_list)
+
+        return scraped_values, scraped_time
     
 
 class ScraperTextFile:
