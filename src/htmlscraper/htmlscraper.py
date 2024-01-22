@@ -140,7 +140,7 @@ class Scraper:
 
         return scraped_values
     
-    def scrape_data(self, id_list:list, time_id_list:list):
+    def scrape_data2(self, id_list:list, time_id_list:list):
 
         try:
             # Fetch HTML content from the specified address and path
@@ -211,11 +211,11 @@ class ScraperTextFile:
             
         return scraped_values
     
-    
-    def scrape_data(self, id_list:list, time_id_list:list):
+
+    def scrape_data2(self, id_list:list, time_id_list:list):
         
         # Scrape data from the parsed HTML
         scraped_values = self.extract_elements_by_ids(id_list)
         scraped_time = self.extract_elements_by_ids(time_id_list)
             
-        return scraped_values
+        return scraped_values, scraped_time
