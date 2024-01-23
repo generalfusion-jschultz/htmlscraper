@@ -19,6 +19,10 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+class GetRequestUnsuccessful(Exception):
+    pass
+
+
 class Scraper:
     '''
     Scrapes specified ids from a URL
@@ -46,7 +50,7 @@ class Scraper:
         else:
             # Print an error message if the request fails and return None
             logger.warning(f"Failed to retrieve HTML. Status code: {response.status_code}")
-            # raise GetRequestUnsuccessful
+            raise GetRequestUnsuccessful
 
 
     def parse_html_content(self, html):
@@ -139,6 +143,7 @@ class Scraper:
         scraped_values = self.extract_elements_by_ids(soup, id_list)
 
         return scraped_values
+    
     
     def scrape_data2(self, id_list:list, time_id_list:list):
 
